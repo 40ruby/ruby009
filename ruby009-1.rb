@@ -17,6 +17,21 @@ def read_csv()
   return csv
 end
 
+def read_tsv()
+  csv = $fp.each_line.map { |line|
+    line.chop.split(' ')
+  }
+
+  return csv
+end
+
+def read_ssv()
+  csv = $fp.each_line.map { |line|
+    line.chop.split(' ')
+  }
+
+  return csv
+end
 
 def close_file()
   $fp.close

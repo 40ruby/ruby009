@@ -1,10 +1,20 @@
 #!/usr/bin/env ruby
 # coding: utf-8
 
-require './ruby008-3.rb'
+require './ruby009-3.rb'
 
 if ARGV.size > 0 then
-  fp = File_test.new(ARGV[ARGV.size - 1])
+  file_name = ARGV[ARGV.size - 1]
+  case file_name
+  when /.*csv$/ then
+    fp = File_CSV.new(file_name)
+  when /.*tsv$/ then
+    fp = File_TSV.new(file_name)
+  when /.*ssv$/ then
+    fp = File_TSV.new(file_name)
+  else
+    abort "対象外のファイルです"
+  end
 else
   abort "usage: ${PROGRAM_NAME} <filename>"
 end
